@@ -1,0 +1,14 @@
+.chord {
+  animation-name: slide;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+}
+
+@keyframes slide {
+    0% {
+      transform: translateX(calc(0vw)) /* -var(--chord-width) */
+}
+    100% {
+      transform: translateX(100vw)
+    }
+}
