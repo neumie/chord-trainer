@@ -5,7 +5,7 @@ import { draw } from "@neumie/vexchords";
 const chordWidth = 300;
 const chordHeight = 400;
 
-function ChordTemplate() {
+export function ChordTemplate() {
   function drawChord() {
     draw(
       ".ChordTemplate",
@@ -45,5 +45,3 @@ function ChordTemplate() {
     ></div>
   );
 }
-
-export default ChordTemplate;

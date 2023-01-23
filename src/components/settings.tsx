@@ -3,7 +3,7 @@ import Select from "react-select";
 
 import chordList from "../../chords";
 
-function Settings() {
+export function Settings() {
   const options = Object.keys(chordList).map((chordKey) => ({
     value: chordKey,
     label: chordKey,
@@ -21,5 +21,3 @@ function Settings() {
     </div>
   );
 }
-
-export default Settings;

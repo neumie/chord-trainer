@@ -20,7 +20,7 @@ type ChordProps = {
   remove: () => void;
 };
 
-function Chord(props: ChordProps) {
+export function Chord(props: ChordProps) {
   const chordId: string = nanoid();
   const duration = props.duration / 200;
 
@@ -62,5 +62,3 @@ function Chord(props: ChordProps) {
     </>
   );
 }
-
-export default Chord;
