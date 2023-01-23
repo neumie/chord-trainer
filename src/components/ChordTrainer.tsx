@@ -7,23 +7,30 @@ import ChordTemplate from "./ChordTemplate";
 const chordWidth = 300;
 const chordHeight = 400;
 
+// type ChordTrainerProps = {
+//   selectedChords: [];
+// };
+
+type ChordType = {
+  key: string;
+  id: string;
+  width: number;
+  height: number;
+  bpm: number;
+  chord: string;
+  remove: Function;
+};
+
 function ChordTrainer() {
-  const [bpm, setBpm] = useState<number>(30);
+  // function ChordTrainer(props: ChordTrainerProps) {
+  const [start, setStart] = useState<Boolean>(false);
+  const [bpm, setBpm] = useState<number>(100);
   const [sound, setSound] = useState<boolean>(false);
-  const [chords, setChords] = useState([
-    {
-      key: "1",
-      id: "1",
-      width: chordWidth,
-      height: chordHeight,
-      bpm: bpm,
-      chord: "dm",
-      remove: () => removeChord("1"),
-    },
-  ]);
+  const [chords, setChords] = useState<ChordType>();
 
   //Starts rendering chords
   useEffect(() => {
+    console.log("fired");
     const interval = setInterval(() => {
       sound && new Audio("./../../metronome.mp3").play();
       addChord(chordWidth, chordHeight, (60 / bpm) * 1000, "cm");
@@ -31,12 +38,12 @@ function ChordTrainer() {
     return () => clearInterval(interval);
   }, []);
 
-  //Adds a chord to the state
+  //Adds a random chord to the state
   function addChord(width: number, height: number, bpm: number, chord: string) {
     const id: string = nanoid();
     setChords((prev) => {
       return [
-        ...prev,
+        ...(prev || {}),
         {
           key: id,
           id: id,
@@ -58,6 +65,10 @@ function ChordTrainer() {
       });
     });
   }
+
+  // function getRandomChord() {
+  //   const randomIndex = Math.floor(Math.random() * props.selectedChords.length);
+  // }
 
   const chordElements = chords.map((chord) => {
     return (
