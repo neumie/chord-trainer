@@ -1,4 +1,7 @@
 .chord {
+  width: var(--chord-width);
+  height: var(--chord-height);
+
   transform: translateX(-300px);
   animation-name: slide;
   animation-duration: 5s;
@@ -9,7 +12,7 @@
 @keyframes slide {
   0% {
     opacity: 0%;
-    transform: translateX(calc(0vw - 300px));
+    transform: translateX(calc(0vw - var(--chord-width)));
     }
   30% {
     opacity: 100%;

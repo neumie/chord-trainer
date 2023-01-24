@@ -55,8 +55,8 @@ export function Chord(props: ChordProps) {
           style={
             {
               animationDuration: `${duration}s`,
-              width: `${props.width}px`,
-              height: `${props.height}px`,
+              chordWidth: `${props.width}px`,
+              chordHeight: `${props.height}px`,
             } as React.CSSProperties
           }
           className={`${props.id} chord absolute`}
