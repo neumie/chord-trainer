@@ -8,7 +8,7 @@ export type Chords = {
   [index: string]: Chord;
 };
 
-const chords: Chords = {
+export const chords: Chords = {
   dm: {
     chord: [
       [1, 2],
@@ -30,5 +30,3 @@ const chords: Chords = {
     ],
   },
 };
-
-export default chords;

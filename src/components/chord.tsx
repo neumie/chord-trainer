@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // @ts-ignore
 import { draw } from "@neumie/vexchords";
 import { customAlphabet } from "nanoid";
-import chordList from "../constants/chords";
+import { chords as chordList } from "../constants/chords";
 import "./Chord.component.css";
 
 const nanoid = customAlphabet(
