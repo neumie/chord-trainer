@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "react-select";
 
-import chordList from "../../chords";
+import chordList from "../constants/chords";
 
 export function Settings() {
   const options = Object.keys(chordList).map((chordKey) => ({
