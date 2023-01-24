@@ -40,6 +40,7 @@ export function Chord(props: ChordProps) {
     });
   }
 
+  //Chord lifespan
   useEffect(() => {
     drawChord();
     setTimeout(() => {

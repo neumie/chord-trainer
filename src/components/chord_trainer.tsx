@@ -15,7 +15,7 @@ const nanoid = customAlphabet(
 export function ChordTrainer() {
   const [bpm, setBpm] = useState<number>(60);
   const [sound, setSound] = useState<boolean>(false);
-  const [chords, setChords] = useState(["a"]);
+  const [chords, setChords] = useState<string[]>([]);
 
   //Starts rendering chords
   useEffect(() => {
@@ -58,7 +58,7 @@ export function ChordTrainer() {
 
   return (
     <div className="w-full h-[400px] relative">
-      <ChordTemplate />
+      <ChordTemplate width={chordWidth} height={chordHeight} />
       {chordElements}
     </div>
   );
