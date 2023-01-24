@@ -5,10 +5,21 @@
 }
 
 @keyframes slide {
-    0% {
-      transform: translateX(calc(0vw)) /* -var(--chord-width) */
-}
-    100% {
-      transform: translateX(100vw)
-    }
+  0% {
+    opacity: 0%;
+    transform: translateX(0vw);
+  }
+  25% {
+    opacity: 100%;
+  }
+  60% {
+    opacity: 100%;
+  }
+  75% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 0%;
+    transform: translateX(100vw);
+  }
 }
