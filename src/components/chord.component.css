@@ -2,7 +2,7 @@
   width: var(--chord-width);
   height: var(--chord-height);
 
-  transform: translateX(-300px);
+  transform: translateX(-var(--chord-width));
   animation-name: slide;
   animation-duration: 5s;
   animation-timing-function: linear;
