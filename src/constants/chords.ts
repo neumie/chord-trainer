@@ -1,7 +1,7 @@
 export type Note = [number, number | "x"];
 
 export type Chord = {
-  [index: string]: Note[];
+  chord: Note[];
 };
 
 export type Chords = {

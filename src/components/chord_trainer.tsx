@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { customAlphabet } from "nanoid";
+import "crypto";
 
 import { Chord } from "./chord";
 import { ChordTemplate } from "./chord_template";
@@ -21,11 +22,15 @@ export function ChordTrainer() {
   //Starts rendering chords
   useEffect(() => {
     const interval = setInterval(() => {
-      sound && new Audio("./../../metronome.mp3").play();
+      metronomeClick();
       addChord();
     }, convertedBpm);
     return () => clearInterval(interval);
   }, []);
+
+  function metronomeClick() {
+    sound && new Audio("./../../metronome.mp3").play();
+  }
 
   //Adds a chord to the state
   function addChord() {
