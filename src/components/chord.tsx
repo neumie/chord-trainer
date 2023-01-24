@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 // @ts-ignore
 import { draw } from "@neumie/vexchords";
-import { customAlphabet } from "nanoid";
 import { chords as chordList } from "../constants/chords";
 import "./chord.component.css";
 
@@ -34,7 +33,7 @@ export function Chord(props: ChordProps) {
   }
 
   function drawChord() {
-    draw(`.${props.id}`, getRandomChord(), {
+    draw(`.chord${props.id}`, getRandomChord(), {
       width: `${props.width}`,
       height: `${props.height}`,
     });
@@ -59,7 +58,7 @@ export function Chord(props: ChordProps) {
               "--chord-height": `${props.height}px`,
             } as React.CSSProperties
           }
-          className={`${props.id} chord absolute`}
+          className={`chord${props.id} chord absolute`}
         ></div>
       )}
     </>
