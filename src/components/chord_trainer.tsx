@@ -13,21 +13,21 @@ const nanoid = customAlphabet(
 );
 
 export function ChordTrainer() {
-  const [bpm, setBpm] = useState<number>(60);
-  const [sound, setSound] = useState<boolean>(false);
+  const [bpm, setBpm] = useState<number>(20);
+  const [sound, setSound] = useState<boolean>(true);
   const [chords, setChords] = useState<string[]>([]);
 
   //Starts rendering chords
   useEffect(() => {
     const interval = setInterval(() => {
       sound && new Audio("./../../metronome.mp3").play();
-      addChord(chordWidth, chordHeight, (60 / bpm) * 1000, "cm");
+      addChord();
     }, (60 / bpm) * 1000);
     return () => clearInterval(interval);
   }, []);
 
   //Adds a chord to the state
-  function addChord(width: number, height: number, bpm: number, chord: string) {
+  function addChord() {
     const id: string = nanoid();
     setChords((prev) => {
       return [...prev, `${id}`];
@@ -50,7 +50,7 @@ export function ChordTrainer() {
         id={chord}
         width={chordWidth}
         height={chordHeight}
-        duration={bpm}
+        duration={(60 / bpm) * 1000}
         remove={() => removeChord(chord)}
       />
     );

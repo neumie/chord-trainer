@@ -7,16 +7,13 @@
 @keyframes slide {
   0% {
     opacity: 0%;
-    transform: translateX(0vw);
-  }
-  25% {
+    transform: translateX(calc(0vw - 300px));
+    }
+  30% {
     opacity: 100%;
   }
   60% {
     opacity: 100%;
-  }
-  75% {
-    opacity: 0%;
   }
   100% {
     opacity: 0%;

@@ -15,7 +15,7 @@ type ChordProps = {
 };
 
 export function Chord(props: ChordProps) {
-  const duration = props.duration / 15;
+  const duration = (props.duration / 1000) * 4;
 
   const [active, setActive] = useState(true);
 
