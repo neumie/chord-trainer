@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
+import { customAlphabet } from "nanoid";
 
 import { Chord } from "./chord";
 import { ChordTemplate } from "./chord_template";
@@ -7,20 +7,15 @@ import { ChordTemplate } from "./chord_template";
 const chordWidth = 300;
 const chordHeight = 400;
 
+const nanoid = customAlphabet(
+  "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM",
+  10
+);
+
 export function ChordTrainer() {
-  const [bpm, setBpm] = useState<number>(30);
+  const [bpm, setBpm] = useState<number>(60);
   const [sound, setSound] = useState<boolean>(false);
-  const [chords, setChords] = useState([
-    {
-      key: "1",
-      id: "1",
-      width: chordWidth,
-      height: chordHeight,
-      bpm: bpm,
-      chord: "dm",
-      remove: () => removeChord("1"),
-    },
-  ]);
+  const [chords, setChords] = useState(["a"]);
 
   //Starts rendering chords
   useEffect(() => {
@@ -35,18 +30,7 @@ export function ChordTrainer() {
   function addChord(width: number, height: number, bpm: number, chord: string) {
     const id: string = nanoid();
     setChords((prev) => {
-      return [
-        ...prev,
-        {
-          key: id,
-          id: id,
-          width: width,
-          height: height,
-          bpm: bpm,
-          chord: chord,
-          remove: () => removeChord(id),
-        },
-      ];
+      return [...prev, `${id}`];
     });
   }
 
@@ -54,7 +38,7 @@ export function ChordTrainer() {
   function removeChord(id: string) {
     setChords((prev) => {
       return prev.filter((chord) => {
-        return chord.id !== id;
+        return chord !== id;
       });
     });
   }
@@ -62,16 +46,16 @@ export function ChordTrainer() {
   const chordElements = chords.map((chord) => {
     return (
       <Chord
-        key={chord.key}
-        id={chord.id}
-        width={chord.width}
-        height={chord.height}
-        duration={chord.bpm}
-        chord={chord.chord}
-        remove={chord.remove}
+        key={chord}
+        id={chord}
+        width={chordWidth}
+        height={chordHeight}
+        duration={bpm}
+        remove={() => removeChord(chord)}
       />
     );
   });
+
   return (
     <div className="w-full h-[400px] relative">
       <ChordTemplate />
