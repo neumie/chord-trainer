@@ -8,8 +8,8 @@ export function App() {
   const [start, setStart] = useState<boolean>(false);
   const [selectedChords, setSelectedChords] = useState<string[]>([]);
 
-  function startChordTrainer() {
-    setStart(true);
+  function toggleChordTrainer() {
+    setStart((prev) => !prev);
   }
 
   function handleChordChange(selectedChordsId: SelectedChordsId) {
@@ -21,7 +21,8 @@ export function App() {
       <Navbar />
       {start && <ChordTrainer selectedChords={selectedChords} />}
       <Settings
-        start={startChordTrainer}
+        isRunning={start}
+        toggle={toggleChordTrainer}
         handleChordChange={handleChordChange}
       />
     </div>

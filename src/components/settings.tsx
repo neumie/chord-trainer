@@ -6,7 +6,8 @@ import { chords as chordsData } from "../constants/chords";
 export type SelectedChordsId = string[];
 
 type SettingsProps = {
-  start: Function;
+  isRunning: boolean;
+  toggle: Function;
   handleChordChange: Function;
 };
 
@@ -31,7 +32,9 @@ export function Settings(props: SettingsProps) {
           }}
         />
       </form>
-      <button onClick={() => props.start()}>start</button>
+      <button onClick={() => props.toggle()}>
+        {(props.isRunning && "STOP") || "START"}
+      </button>
     </div>
   );
 }
