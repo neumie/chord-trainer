@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 
 import { chords as chordsData } from "../constants/chords";
@@ -9,6 +9,8 @@ type SettingsProps = {
   isRunning: boolean;
   toggle: Function;
   handleChordChange: Function;
+  bpm: number;
+  handleBpmChange: Function;
 };
 
 export function Settings(props: SettingsProps) {
@@ -21,7 +23,13 @@ export function Settings(props: SettingsProps) {
     <div>
       <form>
         <label>
-          <input type="number" name="tempo" placeholder="60" />
+          <input
+            type="number"
+            name="tempo"
+            placeholder="30"
+            value={props.bpm}
+            onChange={(e) => props.handleBpmChange(e.target.value)}
+          />
         </label>
         <Select
           options={options}
