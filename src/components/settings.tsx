@@ -1,12 +1,12 @@
 import React from "react";
 import Select from "react-select";
 
-import { chords as chordList } from "../constants/chords";
+import { Chord, chords as chordsData, Tones } from "../constants/chords";
 
 export function Settings() {
-  const options = Object.keys(chordList).map((chordKey) => ({
-    value: chordKey,
-    label: chordKey,
+  const options = chordsData.map((chord) => ({
+    value: chord.id,
+    label: chord.name,
   }));
   console.log(options);
 

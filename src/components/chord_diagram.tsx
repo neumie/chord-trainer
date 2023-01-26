@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 // @ts-ignore
 import { draw } from "@neumie/vexchords";
 import "./chord.component.css";
-import { Chord, Vexchord } from "../constants/chords";
+import { Vexchord } from "../constants/chords";
+
+import { Chord, chords as chordsData, Tones } from "../constants/chords";
 
 type ChordDiagramProps = {
   key: string;
   id: string;
-  vexchord: Vexchord;
+  chordId: string;
   width: number;
   height: number;
   duration: number;
@@ -19,14 +21,24 @@ export function ChordDiagram(props: ChordDiagramProps) {
 
   const [active, setActive] = useState(true);
 
+  function getVexchord() {
+    const chordData =
+      chordsData.find((chord) => chord.id === props.chordId) || chordsData[0];
+    const { notes, position } = chordData;
+    const vexchord: Vexchord = {
+      chord: notes,
+      position: position,
+    };
+    return vexchord;
+  }
+
   function disable() {
     props.remove();
     setActive(false);
   }
 
   function drawChord() {
-    console.log(props.vexchord);
-    draw(`.chord${props.id}`, props.vexchord, {
+    draw(`.chord${props.id}`, getVexchord(), {
       width: `${props.width}`,
       height: `${props.height}`,
     });

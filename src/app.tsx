@@ -6,7 +6,7 @@ import { Settings } from "./components/settings";
 
 export function App() {
   const [start, setStart] = useState<boolean>(true);
-  // const [selectedChords, setSelectedChords] = useState<Option>();
+  const [selectedChords, setSelectedChords] = useState();
 
   // function handleChordChange(options: Option) {
   //   setSelectedChords(options);
@@ -18,7 +18,7 @@ export function App() {
       <Navbar />
       {start && <ChordTrainer />}
       {/* {start && <ChordTrainer selectedChords={selectedChords} />} */}
-      {/* <Settings onChordChange={handleChordChange} /> */}
+      <Settings />
     </div>
   );
 }

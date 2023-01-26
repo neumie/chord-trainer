@@ -29,7 +29,7 @@ export const chords: Chord[] = [{
             [4, 2],
             [5, 3],
             [6, "x"],
-          ]
+          ],
   },
   {
     id: "2",
@@ -42,6 +42,6 @@ export const chords: Chord[] = [{
             [4, 0],
             [5, 2],
             [6, 3],
-          ]
+          ],
   },
 ]
