@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 // @ts-ignore
 import { draw } from "@neumie/vexchords";
-import { chords as chordList } from "../constants/chords";
 import "./chord.component.css";
+import { Chord, Vexchord } from "../constants/chords";
 
-type ChordProps = {
+type ChordDiagramProps = {
   key: string;
   id: string;
+  vexchord: Vexchord;
   width: number;
   height: number;
   duration: number;
   remove: Function;
 };
 
-export function Chord(props: ChordProps) {
+export function ChordDiagram(props: ChordDiagramProps) {
   const duration = (props.duration / 1000) * 4;
 
   const [active, setActive] = useState(true);
@@ -23,17 +24,9 @@ export function Chord(props: ChordProps) {
     setActive(false);
   }
 
-  function getRandomChord() {
-    const chordListLength = Object.keys(chordList).length;
-    const randomChordIndex: number = Math.floor(
-      Math.random() * chordListLength
-    );
-    const randomChord = Object.keys(chordList)[randomChordIndex];
-    return chordList[randomChord];
-  }
-
   function drawChord() {
-    draw(`.chord${props.id}`, getRandomChord(), {
+    console.log(props.vexchord);
+    draw(`.chord${props.id}`, props.vexchord, {
       width: `${props.width}`,
       height: `${props.height}`,
     });

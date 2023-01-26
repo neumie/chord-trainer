@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-import { Chord } from "./chord";
+import { ChordDiagram } from "./chord_diagram";
 import { ChordTemplate } from "./chord_template";
+
+import {
+  Chord,
+  Vexchord,
+  chords as chordsData,
+  Tones,
+} from "../constants/chords";
 
 const chordWidth = 300;
 const chordHeight = 400;
@@ -43,11 +50,29 @@ export function ChordTrainer() {
     });
   }
 
+  function getRandomChord() {
+    const settingsData = [Tones.G, Tones.C];
+    const randomTone =
+      settingsData[Math.floor(Math.random() * settingsData.length)];
+    const randomChord: Chord =
+      chordsData.find((chord) => chord.tone === randomTone) || chordsData[0];
+    return randomChord;
+  }
+
+  function getVexchord(chord: Chord) {
+    const vexchord: Vexchord = {
+      chord: chord.notes,
+      position: chord.position,
+    };
+    return vexchord;
+  }
+
   const chordElements = chords.map((chord) => {
     return (
-      <Chord
+      <ChordDiagram
         key={chord}
         id={chord}
+        vexchord={getVexchord(getRandomChord())}
         width={chordWidth}
         height={chordHeight}
         duration={convertedBpm}
