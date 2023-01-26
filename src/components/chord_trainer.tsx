@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import { ChordDiagram } from "./chord_diagram";
 import { ChordTemplate } from "./chord_template";
 
-import { Chord, chords as chordsData, Tones } from "../constants/chords";
-
 const chordWidth = 300;
 const chordHeight = 400;
 
