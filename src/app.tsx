@@ -2,23 +2,28 @@ import React, { useState } from "react";
 
 import { Navbar } from "./components/navbar";
 import { ChordTrainer } from "./components/chord_trainer";
-import { Settings } from "./components/settings";
+import { SelectedChordsId, Settings } from "./components/settings";
 
 export function App() {
-  const [start, setStart] = useState<boolean>(true);
-  const [selectedChords, setSelectedChords] = useState();
+  const [start, setStart] = useState<boolean>(false);
+  const [selectedChords, setSelectedChords] = useState<string[]>([]);
 
-  // function handleChordChange(options: Option) {
-  //   setSelectedChords(options);
-  //   setStart(true);
-  // }
+  function startChordTrainer() {
+    setStart(true);
+  }
+
+  function handleChordChange(selectedChordsId: SelectedChordsId) {
+    setSelectedChords(selectedChordsId);
+  }
 
   return (
     <div className="flex-col">
       <Navbar />
-      {start && <ChordTrainer />}
-      {/* {start && <ChordTrainer selectedChords={selectedChords} />} */}
-      <Settings />
+      {start && <ChordTrainer selectedChords={selectedChords} />}
+      <Settings
+        start={startChordTrainer}
+        handleChordChange={handleChordChange}
+      />
     </div>
   );
 }

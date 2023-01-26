@@ -4,7 +4,7 @@ import { draw } from "@neumie/vexchords";
 import "./chord.component.css";
 import { Vexchord } from "../constants/chords";
 
-import { Chord, chords as chordsData, Tones } from "../constants/chords";
+import { chords as chordsData } from "../constants/chords";
 
 type ChordDiagramProps = {
   key: string;

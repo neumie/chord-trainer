@@ -8,7 +8,11 @@ import { Chord, chords as chordsData, Tones } from "../constants/chords";
 const chordWidth = 300;
 const chordHeight = 400;
 
-export function ChordTrainer() {
+type ChordTrainerProps = {
+  selectedChords: string[];
+};
+
+export function ChordTrainer(props: ChordTrainerProps) {
   const bpm: number = 20;
   const convertedBpm: number = (60 / bpm) * 1000;
   const sound: boolean = true;
@@ -46,12 +50,11 @@ export function ChordTrainer() {
   }
 
   function getRandomChordId() {
-    const settingsData = [Tones.G, Tones.C];
-    const randomTone =
-      settingsData[Math.floor(Math.random() * settingsData.length)];
-    const randomChord: Chord =
-      chordsData.find((chord) => chord.tone === randomTone) || chordsData[0];
-    return randomChord.id;
+    const randomChordId =
+      props.selectedChords[
+        Math.floor(Math.random() * props.selectedChords.length)
+      ];
+    return randomChordId;
   }
 
   const chordElements = chords.map((chord) => {

@@ -1,23 +1,37 @@
 import React from "react";
 import Select from "react-select";
 
-import { Chord, chords as chordsData, Tones } from "../constants/chords";
+import { chords as chordsData } from "../constants/chords";
 
-export function Settings() {
+export type SelectedChordsId = string[];
+
+type SettingsProps = {
+  start: Function;
+  handleChordChange: Function;
+};
+
+export function Settings(props: SettingsProps) {
   const options = chordsData.map((chord) => ({
     value: chord.id,
     label: chord.name,
   }));
-  console.log(options);
 
   return (
     <div>
       <form>
         <label>
           <input type="number" name="tempo" placeholder="60" />
-          <Select options={options} />
         </label>
+        <Select
+          options={options}
+          isMulti
+          onChange={(selectedChords) => {
+            const selectedChordsId = selectedChords.map((chord) => chord.value);
+            props.handleChordChange(selectedChordsId);
+          }}
+        />
       </form>
+      <button onClick={() => props.start()}>start</button>
     </div>
   );
 }
