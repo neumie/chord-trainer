@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Navbar } from "./components/navbar";
 import { ChordTrainer } from "./components/chord_trainer";
 import { SelectedChordsId, Settings } from "./components/settings";
+import { ChordTemplate } from "./components/chord_template";
 
 export function App() {
   const [start, setStart] = useState<boolean>(false);
@@ -25,7 +26,7 @@ export function App() {
   return (
     <div className="flex-col">
       <Navbar />
-      {start && <ChordTrainer selectedChords={selectedChords} bpm={bpm} />}
+      {<ChordTrainer start={start} selectedChords={selectedChords} bpm={bpm} />}
       <Settings
         isRunning={start}
         toggle={toggleChordTrainer}

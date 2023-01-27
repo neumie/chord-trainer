@@ -7,6 +7,7 @@ const chordWidth = 300;
 const chordHeight = 400;
 
 type ChordTrainerProps = {
+  start: boolean;
   bpm: number;
   selectedChords: string[];
 };
@@ -14,16 +15,18 @@ export function ChordTrainer(props: ChordTrainerProps) {
   const convertedBpm: number = (60 / props.bpm) * 1000;
   const sound: boolean = true;
   const [chords, setChords] = useState<string[]>([]);
+  let interval: any;
 
   //Starts rendering chords
   useEffect(() => {
-    console.log(`setting interval to ${convertedBpm}`);
-    const interval = setInterval(() => {
-      metronomeClick();
-      addChord();
-    }, convertedBpm);
+    if (props.start) {
+      interval = setInterval(() => {
+        metronomeClick();
+        addChord();
+      }, convertedBpm);
+    } else clearInterval(interval);
     return () => clearInterval(interval);
-  }, []);
+  }, [props.start]);
 
   function metronomeClick() {
     sound && new Audio("./../../metronome.mp3").play();
@@ -71,7 +74,7 @@ export function ChordTrainer(props: ChordTrainerProps) {
   return (
     <div className="w-full h-[400px] relative">
       <ChordTemplate width={chordWidth} height={chordHeight} />
-      {chordElements}
+      {props.start && chordElements}
     </div>
   );
 }
