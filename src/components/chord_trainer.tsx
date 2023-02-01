@@ -29,6 +29,7 @@ export function ChordTrainer(props: ChordTrainerProps) {
     return () => reset();
   }, [props.start]);
 
+  //clear chords and clear interval
   function reset() {
     interval && clearInterval(interval);
     setChords([]);
@@ -64,6 +65,7 @@ export function ChordTrainer(props: ChordTrainerProps) {
     return randomChordId;
   }
 
+  //Map over chords to produce JSX elements
   const chordElements = chords.map((chord) => {
     return (
       <ChordDiagram

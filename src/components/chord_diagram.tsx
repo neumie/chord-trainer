@@ -21,6 +21,7 @@ export function ChordDiagram(props: ChordDiagramProps) {
 
   const [active, setActive] = useState(true);
 
+  //get Vexchord object
   function getVexchord() {
     const chordData =
       chordsData.find((chord) => chord.id === props.chordId) || chordsData[0];
