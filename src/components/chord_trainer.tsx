@@ -3,14 +3,15 @@ import React, { useState, useEffect } from "react";
 import { ChordDiagram } from "./chord_diagram";
 import { ChordTemplate } from "./chord_template";
 
-const chordWidth = 300;
-const chordHeight = 400;
+const chordWidth = 350;
+const chordHeight = 500;
 
 type ChordTrainerProps = {
   start: boolean;
   bpm: number;
   selectedChords: string[];
 };
+
 export function ChordTrainer(props: ChordTrainerProps) {
   const convertedBpm: number = (60 / props.bpm) * 1000;
   const sound: boolean = true;
@@ -29,10 +30,11 @@ export function ChordTrainer(props: ChordTrainerProps) {
   }, [props.start]);
 
   function reset() {
-    clearInterval(interval);
+    interval && clearInterval(interval);
     setChords([]);
   }
 
+  //Checks if sound is enabled and plays metronome sound
   function metronomeClick() {
     sound && new Audio("./../../metronome.mp3").play();
   }
@@ -77,7 +79,9 @@ export function ChordTrainer(props: ChordTrainerProps) {
   });
 
   return (
-    <div className="w-full h-[400px] relative">
+    <div
+      className={`w-full h-full sm:h-[300px] md:h-[500px] l:h-[700px] xl:h[1000px] relative`}
+    >
       <ChordTemplate width={chordWidth} height={chordHeight} />
       {props.start && chordElements}
     </div>

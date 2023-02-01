@@ -19,7 +19,6 @@ export function App() {
   }
 
   function handleBpmChange(bpm: number) {
-    console.log(bpm);
     setBpm(bpm);
   }
 

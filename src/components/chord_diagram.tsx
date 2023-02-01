@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // @ts-ignore
 import { draw } from "@neumie/vexchords";
-import "./chord.component.css";
+import "./chord-diagram.component.css";
 import { Vexchord } from "../constants/chords";
 
 import { chords as chordsData } from "../constants/chords";
@@ -63,7 +63,8 @@ export function ChordDiagram(props: ChordDiagramProps) {
               "--chord-height": `${props.height}px`,
             } as React.CSSProperties
           }
-          className={`chord${props.id} chord absolute`}
+          className={`chord${props.id} chord absolute 
+          [&>svg]:scale-[0.65] [&>svg]:sm:scale-[0.75] [&>svg]:md:scale-[0.85] [&>svg]:lg:scale-[1] [&>svg]:xl:scale-[1.1]`}
         ></div>
       )}
     </>

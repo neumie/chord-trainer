@@ -24,7 +24,7 @@ export function ChordTemplate(props: ChordProps) {
       {
         width: `${props.width}`,
         height: `${props.height}`,
-        defaultColor: "#745",
+        defaultColor: "#34B233",
         stringWidth: 2,
         fretWidth: 3,
       }
@@ -43,7 +43,8 @@ export function ChordTemplate(props: ChordProps) {
           height: `${props.height}px`,
         } as React.CSSProperties
       }
-      className={`ChordTemplate absolute left-0 right-0 m-auto drop-shadow-3xl opacity-50`}
+      className={`ChordTemplate absolute left-0 right-0 m-auto drop-shadow-3xl opacity-50 
+      [&>svg]:scale-[0.65] [&>svg]:sm:scale-[0.75] [&>svg]:md:scale-[0.85] [&>svg]:lg:scale-[1] [&>svg]:xl:scale-[1.1]`}
     ></div>
   );
 }
