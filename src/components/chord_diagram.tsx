@@ -25,10 +25,11 @@ export function ChordDiagram(props: ChordDiagramProps) {
   function getVexchord() {
     const chordData =
       chordsData.find((chord) => chord.id === props.chordId) || chordsData[0];
-    const { notes, position } = chordData;
+    const { notes, position, barres } = chordData;
     const vexchord: Vexchord = {
       chord: notes,
       position: position,
+      barres: barres,
     };
     return vexchord;
   }
