@@ -4,7 +4,7 @@ type NumberProps = {
   className: string;
   disabled: boolean;
   bpm: number;
-  handleBpmChange: Function;
+  onChange: Function;
 };
 
 export function Number(props: NumberProps) {
@@ -16,7 +16,7 @@ export function Number(props: NumberProps) {
         className="bg-red-500 hover:bg-red-400 text-white font-bold py-1 px-2 border-b-4 border-red-700 hover:border-red-500 rounded"
         onClick={(e) => {
           e.preventDefault();
-          props.handleBpmChange(props.bpm - 1);
+          props.onChange(props.bpm - 1);
         }}
       >
         -
@@ -28,7 +28,7 @@ export function Number(props: NumberProps) {
         type="number"
         name="tempo"
         value={props.bpm}
-        onChange={(e) => props.handleBpmChange(e.target.value)}
+        onChange={(e) => props.onChange(e.target.value)}
       />
       {/* PLUS ONE BUTTON */}
       <button
@@ -36,7 +36,7 @@ export function Number(props: NumberProps) {
         className="bg-green-500 hover:bg-green-400 text-white font-bold py-1 px-2 border-b-4 border-green-700 hover:border-green-500 rounded"
         onClick={(e) => {
           e.preventDefault();
-          props.handleBpmChange(props.bpm + 1);
+          props.onChange(props.bpm + 1);
         }}
       >
         +

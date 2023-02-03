@@ -43,7 +43,7 @@ export function Settings(props: SettingsProps) {
             className="col-span-3"
             disabled={props.isRunning}
             bpm={props.bpm}
-            handleBpmChange={props.handleBpmChange}
+            onChange={props.handleBpmChange}
           />
         </div>
 
