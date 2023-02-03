@@ -27,7 +27,7 @@ export type Chord = {
 
 export const chords: Chord[] = [{
     id: "1",
-    name: "C",
+    name: "C (open)",
     tone: Tones.C,
     notes: [
             [1, 0],
@@ -40,7 +40,7 @@ export const chords: Chord[] = [{
   },
   {
     id: "2",
-    name: "G",
+    name: "G (open)",
     tone: Tones.G,
     notes: [
             [1, 3],
@@ -53,7 +53,7 @@ export const chords: Chord[] = [{
   },
   {
     id: "3",
-    name: "D",
+    name: "D (open)",
     tone: Tones.D,
     notes: [
             [1, 2],
@@ -66,7 +66,7 @@ export const chords: Chord[] = [{
   },
   {
     id: "4",
-    name: "E",
+    name: "E (open)",
     tone: Tones.E,
     notes: [
             [1, 0],
@@ -79,7 +79,7 @@ export const chords: Chord[] = [{
   },
   {
     id: "5",
-    name: "F",
+    name: "F (bar 1)",
     tone: Tones.F,
     notes: [
             [1, 1],
@@ -93,7 +93,7 @@ export const chords: Chord[] = [{
   },
   {
     id: "6",
-    name: "A",
+    name: "A (open)",
     tone: Tones.A,
     notes: [
             [1, 0],
@@ -106,7 +106,7 @@ export const chords: Chord[] = [{
   },
   {
     id: "7",
-    name: "B",
+    name: "B (bar 2)",
     tone: Tones.B,
     notes: [
             [1, 2],

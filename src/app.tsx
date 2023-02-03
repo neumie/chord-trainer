@@ -23,7 +23,7 @@ export function App() {
   }
 
   return (
-    <div className="flex-col">
+    <div className="flex flex-col justify-between">
       <Navbar />
       {<ChordTrainer start={start} selectedChords={selectedChords} bpm={bpm} />}
       <Settings

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { Number } from "./number";
 
 import { chords as chordsData } from "../constants/chords";
 
@@ -20,29 +21,43 @@ export function Settings(props: SettingsProps) {
   }));
 
   return (
-    <div>
-      <form>
-        <label>
-          <input
-            type="number"
-            name="tempo"
-            placeholder="30"
-            value={props.bpm}
-            onChange={(e) => props.handleBpmChange(e.target.value)}
-          />
-        </label>
+    <div className="w-screen grid place-items-center">
+      <form className="w-[75%] max-w-lg grid grid-cols-2 gap-2 grid-rows-[1fr_3em]">
+        {/* Chord Select */}
         <Select
+          className="row-span-1 col-span-full grid-"
           options={options}
           isMulti
+          maxMenuHeight={300}
+          menuPlacement={"top"}
           onChange={(selectedChords) => {
             const selectedChordsId = selectedChords.map((chord) => chord.value);
             props.handleChordChange(selectedChordsId);
           }}
         />
+
+        {/* BPM Select */}
+        <div className="row-span-2 col-span-1 flex-col">
+          <h2 className="text-center">BPM:</h2>
+          <Number
+            className="col-span-3"
+            disabled={props.isRunning}
+            bpm={props.bpm}
+            handleBpmChange={props.handleBpmChange}
+          />
+        </div>
+
+        {/* START/STOP button */}
+        <button
+          className="row-span-2 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+          onClick={(e) => {
+            e.preventDefault();
+            props.toggle();
+          }}
+        >
+          {(props.isRunning && "STOP") || "START"}
+        </button>
       </form>
-      <button onClick={() => props.toggle()}>
-        {(props.isRunning && "STOP") || "START"}
-      </button>
     </div>
   );
 }

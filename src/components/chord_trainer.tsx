@@ -82,7 +82,7 @@ export function ChordTrainer(props: ChordTrainerProps) {
 
   return (
     <div
-      className={`w-full h-full sm:h-[300px] md:h-[500px] l:h-[700px] xl:h[1000px] relative`}
+      className={`w-full h-[450px] mt-[-75px] md:h-[500px] md:mt-[-50px] lg:h-[550px] lg:mt-[-30px] xl:h[600px] xl:mt-[-20px] relative`}
     >
       <ChordTemplate width={chordWidth} height={chordHeight} />
       {props.start && chordElements}
