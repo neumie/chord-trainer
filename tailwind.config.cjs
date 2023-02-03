@@ -6,9 +6,6 @@ module.exports = {
       dropShadow: {
         "3xl": "0px 0px 3px rgb(0, 0, 0)",
       },
-      gridTEmplateRows: {
-        BPM: "1fr 100px",
-      },
     },
   },
   plugins: [],
