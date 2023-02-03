@@ -25,8 +25,6 @@ export function ChordDiagram({
 }: ChordDiagramProps) {
   const animationDuration = (duration / 1000) * 4;
 
-  const [active, setActive] = useState(true);
-
   //get Vexchord object
   function getVexchord() {
     const chordData =
@@ -42,7 +40,6 @@ export function ChordDiagram({
 
   function disable() {
     remove();
-    setActive(false);
   }
 
   function drawChord() {
@@ -62,19 +59,17 @@ export function ChordDiagram({
 
   return (
     <>
-      {active && (
-        <div
-          style={
-            {
-              animationDuration: `${animationDuration}s`,
-              "--chord-width": `${width}px`,
-              "--chord-height": `${height}px`,
-            } as React.CSSProperties
-          }
-          className={`chord${id} chord absolute 
-          [&>svg]:scale-[0.65] [&>svg]:sm:scale-[0.75] [&>svg]:md:scale-[0.85] [&>svg]:lg:scale-[1] [&>svg]:xl:scale-[1.1]`}
-        ></div>
-      )}
+      <div
+        style={
+          {
+            animationDuration: `${animationDuration}s`,
+            "--chord-width": `${width}px`,
+            "--chord-height": `${height}px`,
+          } as React.CSSProperties
+        }
+        className={`chord${id} chord absolute 
+        [&>svg]:scale-[0.65] [&>svg]:sm:scale-[0.75] [&>svg]:md:scale-[0.85] [&>svg]:lg:scale-[1] [&>svg]:xl:scale-[1.1]`}
+      ></div>
     </>
   );
 }
