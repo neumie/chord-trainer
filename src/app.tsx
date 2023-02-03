@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Navbar } from "./components/navbar";
 import { ChordTrainer } from "./components/chord_trainer";
 import { SelectedChordsId, Settings } from "./components/settings";
-import { ChordTemplate } from "./components/chord_template";
 
 export function App() {
   const [start, setStart] = useState<boolean>(false);

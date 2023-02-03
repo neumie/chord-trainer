@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
+
 // @ts-ignore
 import { draw } from "@neumie/vexchords";
 import "./chord-diagram.module.css";
-import { Vexchord } from "../constants/chords";
-
-import { chords as chordsData } from "../constants/chords";
+import { Vexchord, chords as chordsData } from "../constants/chords";
 
 type ChordDiagramProps = {
   key: string;

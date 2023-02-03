@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+
 import Select from "react-select";
 import { Number } from "./number";
-
 import { chords as chordsData } from "../constants/chords";
 
 export type SelectedChordsId = string[];
