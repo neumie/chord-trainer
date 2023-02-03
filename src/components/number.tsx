@@ -4,39 +4,39 @@ type NumberProps = {
   className: string;
   disabled: boolean;
   bpm: number;
-  onChange: Function;
+  onChange: (newBpm: number) => void;
 };
 
-export function Number(props: NumberProps) {
+export function Number({ className, disabled, bpm, onChange }: NumberProps) {
   return (
-    <div className={`grid grid-cols-3 w-auto ${props.className}`}>
+    <div className={`grid grid-cols-3 w-auto ${className}`}>
       {/* MINUS ONE BUTTON */}
       <button
-        disabled={props.disabled}
+        disabled={disabled}
         className="bg-red-500 hover:bg-red-400 text-white font-bold py-1 px-2 border-b-4 border-red-700 hover:border-red-500 rounded"
         onClick={(e) => {
           e.preventDefault();
-          props.onChange(props.bpm - 1);
+          onChange(bpm - 1);
         }}
       >
         -
       </button>
       {/* BPM */}
       <input
-        disabled={props.disabled}
+        disabled={disabled}
         className="text-center"
         type="number"
         name="tempo"
-        value={props.bpm}
-        onChange={(e) => props.onChange(e.target.value)}
+        value={bpm}
+        onChange={(e) => onChange(e.target.valueAsNumber)}
       />
       {/* PLUS ONE BUTTON */}
       <button
-        disabled={props.disabled}
+        disabled={disabled}
         className="bg-green-500 hover:bg-green-400 text-white font-bold py-1 px-2 border-b-4 border-green-700 hover:border-green-500 rounded"
         onClick={(e) => {
           e.preventDefault();
-          props.onChange(props.bpm + 1);
+          onChange(bpm + 1);
         }}
       >
         +

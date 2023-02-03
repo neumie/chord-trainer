@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 // @ts-ignore
 import { draw } from "@neumie/vexchords";
-import "./chord-diagram.module.css";
+import "./chord-diagram.component.css";
 import { Vexchord, chords as chordsData } from "../constants/chords";
 
 type ChordDiagramProps = {
@@ -12,18 +12,25 @@ type ChordDiagramProps = {
   width: number;
   height: number;
   duration: number;
-  remove: Function;
+  remove: () => void;
 };
 
-export function ChordDiagram(props: ChordDiagramProps) {
-  const duration = (props.duration / 1000) * 4;
+export function ChordDiagram({
+  id,
+  chordId,
+  width,
+  height,
+  duration,
+  remove,
+}: ChordDiagramProps) {
+  const animationDuration = (duration / 1000) * 4;
 
   const [active, setActive] = useState(true);
 
   //get Vexchord object
   function getVexchord() {
     const chordData =
-      chordsData.find((chord) => chord.id === props.chordId) || chordsData[0];
+      chordsData.find((chord) => chord.id === chordId) || chordsData[0];
     const { notes, position, barres } = chordData;
     const vexchord: Vexchord = {
       chord: notes,
@@ -34,14 +41,14 @@ export function ChordDiagram(props: ChordDiagramProps) {
   }
 
   function disable() {
-    props.remove();
+    remove();
     setActive(false);
   }
 
   function drawChord() {
-    draw(`.chord${props.id}`, getVexchord(), {
-      width: `${props.width}`,
-      height: `${props.height}`,
+    draw(`.chord${id}`, getVexchord(), {
+      width: `${width}`,
+      height: `${height}`,
     });
   }
 
@@ -50,7 +57,7 @@ export function ChordDiagram(props: ChordDiagramProps) {
     drawChord();
     setTimeout(() => {
       disable();
-    }, duration * 1000);
+    }, animationDuration * 1000);
   }, []);
 
   return (
@@ -59,12 +66,12 @@ export function ChordDiagram(props: ChordDiagramProps) {
         <div
           style={
             {
-              animationDuration: `${duration}s`,
-              "--chord-width": `${props.width}px`,
-              "--chord-height": `${props.height}px`,
+              animationDuration: `${animationDuration}s`,
+              "--chord-width": `${width}px`,
+              "--chord-height": `${height}px`,
             } as React.CSSProperties
           }
-          className={`chord${props.id} chord absolute 
+          className={`chord${id} chord absolute 
           [&>svg]:scale-[0.65] [&>svg]:sm:scale-[0.75] [&>svg]:md:scale-[0.85] [&>svg]:lg:scale-[1] [&>svg]:xl:scale-[1.1]`}
         ></div>
       )}

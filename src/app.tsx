@@ -29,8 +29,8 @@ export function App() {
         isRunning={start}
         toggle={toggleChordTrainer}
         bpm={bpm}
-        handleChordChange={handleChordChange}
-        handleBpmChange={handleBpmChange}
+        onChordChange={handleChordChange}
+        onBpmChange={handleBpmChange}
       />
     </div>
   );

@@ -8,7 +8,7 @@ type ChordProps = {
   height: number;
 };
 
-export function ChordTemplate(props: ChordProps) {
+export function ChordTemplate({ width, height }: ChordProps) {
   function drawChord() {
     draw(
       ".ChordTemplate",
@@ -23,8 +23,8 @@ export function ChordTemplate(props: ChordProps) {
         ],
       },
       {
-        width: `${props.width}`,
-        height: `${props.height}`,
+        width: `${width}`,
+        height: `${height}`,
         defaultColor: "#34B233",
         stringWidth: 2,
         fretWidth: 3,
@@ -40,8 +40,8 @@ export function ChordTemplate(props: ChordProps) {
     <div
       style={
         {
-          width: `${props.width}px`,
-          height: `${props.height}px`,
+          width: `${width}px`,
+          height: `${height}px`,
         } as React.CSSProperties
       }
       className={`ChordTemplate absolute left-0 right-0 m-auto drop-shadow-3xl opacity-50 

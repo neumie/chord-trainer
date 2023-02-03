@@ -8,13 +8,19 @@ export type SelectedChordsId = string[];
 
 type SettingsProps = {
   isRunning: boolean;
-  toggle: Function;
-  handleChordChange: Function;
+  toggle: () => void;
+  onChordChange: (selectedChords: string[]) => void;
   bpm: number;
-  handleBpmChange: Function;
+  onBpmChange: (newBpm: number) => void;
 };
 
-export function Settings(props: SettingsProps) {
+export function Settings({
+  isRunning,
+  toggle,
+  onChordChange,
+  bpm,
+  onBpmChange,
+}: SettingsProps) {
   const options = chordsData.map((chord) => ({
     value: chord.id,
     label: chord.name,
@@ -32,7 +38,7 @@ export function Settings(props: SettingsProps) {
           menuPlacement={"top"}
           onChange={(selectedChords) => {
             const selectedChordsId = selectedChords.map((chord) => chord.value);
-            props.handleChordChange(selectedChordsId);
+            onChordChange(selectedChordsId);
           }}
         />
 
@@ -41,9 +47,9 @@ export function Settings(props: SettingsProps) {
           <h2 className="text-center">BPM:</h2>
           <Number
             className="col-span-3"
-            disabled={props.isRunning}
-            bpm={props.bpm}
-            onChange={props.handleBpmChange}
+            disabled={isRunning}
+            bpm={bpm}
+            onChange={onBpmChange}
           />
         </div>
 
@@ -52,10 +58,10 @@ export function Settings(props: SettingsProps) {
           className="row-span-2 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
           onClick={(e) => {
             e.preventDefault();
-            props.toggle();
+            toggle();
           }}
         >
-          {(props.isRunning && "STOP") || "START"}
+          {(isRunning && "STOP") || "START"}
         </button>
       </form>
     </div>

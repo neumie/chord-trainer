@@ -12,22 +12,26 @@ type ChordTrainerProps = {
   selectedChords: string[];
 };
 
-export function ChordTrainer(props: ChordTrainerProps) {
-  const convertedBpm: number = (60 / props.bpm) * 1000;
+export function ChordTrainer({
+  start,
+  bpm,
+  selectedChords,
+}: ChordTrainerProps) {
+  const convertedBpm: number = (60 / bpm) * 1000;
   const sound: boolean = true;
   const [chords, setChords] = useState<string[]>([]);
   let interval: NodeJS.Timer;
 
   //Starts rendering chords
   useEffect(() => {
-    if (props.start) {
+    if (start) {
       interval = setInterval(() => {
         metronomeClick();
         addChord();
       }, convertedBpm);
     } else reset();
     return () => reset();
-  }, [props.start]);
+  }, [start]);
 
   //clear chords and clear interval
   function reset() {
@@ -59,9 +63,7 @@ export function ChordTrainer(props: ChordTrainerProps) {
 
   function getRandomChordId() {
     const randomChordId =
-      props.selectedChords[
-        Math.floor(Math.random() * props.selectedChords.length)
-      ];
+      selectedChords[Math.floor(Math.random() * selectedChords.length)];
     return randomChordId;
   }
 
@@ -85,7 +87,7 @@ export function ChordTrainer(props: ChordTrainerProps) {
       className={`w-full h-[450px] mt-[-75px] md:h-[500px] md:mt-[-50px] lg:h-[550px] lg:mt-[-30px] xl:h[600px] xl:mt-[-20px] relative`}
     >
       <ChordTemplate width={chordWidth} height={chordHeight} />
-      {props.start && chordElements}
+      {start && chordElements}
     </div>
   );
 }
