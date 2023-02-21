@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 // @ts-ignore
 import { draw } from "@neumie/vexchords";
-import "./chord-diagram.component.css";
+import "./chord_diagram.component.css";
 import { Vexchord, chords as chordsData } from "../constants/chords";
 
 type ChordDiagramProps = {
