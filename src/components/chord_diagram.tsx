@@ -15,18 +15,18 @@ type ChordDiagramProps = {
   remove: () => void;
 };
 
-export function ChordDiagram({
+export const ChordDiagram = ({
   id,
   chordId,
   width,
   height,
   duration,
   remove,
-}: ChordDiagramProps) {
+}: ChordDiagramProps) => {
   const animationDuration = (duration / 1000) * 4;
 
   //get Vexchord object
-  function getVexchord() {
+  const getVexchord = () => {
     const chordData =
       chordsData.find((chord) => chord.id === chordId) || chordsData[0];
     const { notes, position, barres } = chordData;
@@ -36,18 +36,18 @@ export function ChordDiagram({
       barres: barres,
     };
     return vexchord;
-  }
+  };
 
-  function disable() {
+  const disable = () => {
     remove();
-  }
+  };
 
-  function drawChord() {
+  const drawChord = () => {
     draw(`.chord${id}`, getVexchord(), {
       width: `${width}`,
       height: `${height}`,
     });
-  }
+  };
 
   //Chord lifespan
   useEffect(() => {
@@ -72,4 +72,4 @@ export function ChordDiagram({
       ></div>
     </>
   );
-}
+};

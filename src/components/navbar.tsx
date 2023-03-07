@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Navbar() {
+export const Navbar = () => {
   return (
     <nav>
       <ul className="flex gap-3 p-3 text-xl text-gray-700">
@@ -8,4 +8,4 @@ export function Navbar() {
       </ul>
     </nav>
   );
-}
+};

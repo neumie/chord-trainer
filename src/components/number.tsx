@@ -7,7 +7,7 @@ type NumberProps = {
   onChange: (newBpm: number) => void;
 };
 
-export function Number({ className, disabled, bpm, onChange }: NumberProps) {
+export const Number = ({ className, disabled, bpm, onChange }: NumberProps) => {
   return (
     <div className={`grid grid-cols-3 w-auto ${className}`}>
       {/* MINUS ONE BUTTON */}
@@ -43,4 +43,4 @@ export function Number({ className, disabled, bpm, onChange }: NumberProps) {
       </button>
     </div>
   );
-}
+};

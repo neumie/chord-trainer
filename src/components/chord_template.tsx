@@ -8,8 +8,8 @@ type ChordProps = {
   height: number;
 };
 
-export function ChordTemplate({ width, height }: ChordProps) {
-  function drawChord() {
+export const ChordTemplate = ({ width, height }: ChordProps) => {
+  const drawChord = () => {
     draw(
       ".ChordTemplate",
       {
@@ -30,7 +30,7 @@ export function ChordTemplate({ width, height }: ChordProps) {
         fretWidth: 3,
       }
     );
-  }
+  };
 
   useEffect(() => {
     drawChord();
@@ -48,4 +48,4 @@ export function ChordTemplate({ width, height }: ChordProps) {
       [&>svg]:scale-[0.65] [&>svg]:sm:scale-[0.75] [&>svg]:md:scale-[0.85] [&>svg]:lg:scale-[1] [&>svg]:xl:scale-[1.1]`}
     ></div>
   );
-}
+};

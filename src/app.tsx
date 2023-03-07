@@ -4,23 +4,23 @@ import { Navbar } from "./components/navbar";
 import { ChordTrainer } from "./components/chord_trainer";
 import { SelectedChordsId, Settings } from "./components/settings";
 
-export function App() {
+export const App = () => {
   const [start, setStart] = useState<boolean>(false);
   const [bpm, setBpm] = useState<number>(30);
   const [sound, setSound] = useState<boolean>(false);
   const [selectedChords, setSelectedChords] = useState<string[]>([]);
 
-  function toggleChordTrainer() {
+  const toggleChordTrainer = () => {
     setStart((prev) => !prev);
-  }
+  };
 
-  function handleChordChange(selectedChordsId: SelectedChordsId) {
+  const handleChordChange = (selectedChordsId: SelectedChordsId) => {
     setSelectedChords(selectedChordsId);
-  }
+  };
 
-  function handleBpmChange(bpm: number) {
+  const handleBpmChange = (bpm: number) => {
     setBpm(bpm);
-  }
+  };
 
   const handleSoundChange = () => {
     setSound((prev) => (prev = !prev));
@@ -48,4 +48,4 @@ export function App() {
       />
     </div>
   );
-}
+};

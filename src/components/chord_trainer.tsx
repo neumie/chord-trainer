@@ -13,12 +13,12 @@ type ChordTrainerProps = {
   sound: boolean;
 };
 
-export function ChordTrainer({
+export const ChordTrainer = ({
   start,
   bpm,
   selectedChords,
   sound,
-}: ChordTrainerProps) {
+}: ChordTrainerProps) => {
   const convertedBpm: number = (60 / bpm) * 1000;
   const [chords, setChords] = useState<string[]>([]);
   const [tick, setTick] = useState<boolean>();
@@ -41,10 +41,10 @@ export function ChordTrainer({
   }, [tick]);
 
   //clear chords and clear interval
-  function reset() {
+  const reset = () => {
     interval && clearInterval(interval);
     setChords([]);
-  }
+  };
 
   //Checks if sound is enabled and plays metronome sound
   const metronomeClick = () => {
@@ -52,27 +52,27 @@ export function ChordTrainer({
   };
 
   //Adds a chord to the state
-  function addChord() {
+  const addChord = () => {
     const id: string = self.crypto.randomUUID();
     setChords((prev) => {
       return [...prev, `${id}`];
     });
-  }
+  };
 
   //Removes a chord from the state
-  function removeChord(id: string) {
+  const removeChord = (id: string) => {
     setChords((prev) => {
       return prev.filter((chord) => {
         return chord !== id;
       });
     });
-  }
+  };
 
-  function getRandomChordId() {
+  const getRandomChordId = () => {
     const randomChordId =
       selectedChords[Math.floor(Math.random() * selectedChords.length)];
     return randomChordId;
-  }
+  };
 
   //Map over chords to produce JSX elements
   const chordElements = chords.map((chord) => {
@@ -97,4 +97,4 @@ export function ChordTrainer({
       {start && chordElements}
     </div>
   );
-}
+};

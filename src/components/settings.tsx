@@ -16,7 +16,7 @@ type SettingsProps = {
   onSoundChange: () => void;
 };
 
-export function Settings({
+export const Settings = ({
   isRunning,
   toggle,
   onChordChange,
@@ -24,7 +24,7 @@ export function Settings({
   onBpmChange,
   sound,
   onSoundChange,
-}: SettingsProps) {
+}: SettingsProps) => {
   const options = chordsData.map((chord) => ({
     value: chord.id,
     label: chord.name,
@@ -76,4 +76,4 @@ export function Settings({
       </form>
     </div>
   );
-}
+};
