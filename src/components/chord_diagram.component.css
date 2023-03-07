@@ -14,10 +14,10 @@
     opacity: 0%;
     transform: translateX(calc(0vw - var(--chord-width)));
     }
-  30% {
+  33% {
     opacity: 100%;
   }
-  60% {
+  66% {
     opacity: 100%;
   }
   100% {
