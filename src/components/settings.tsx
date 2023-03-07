@@ -12,6 +12,8 @@ type SettingsProps = {
   onChordChange: (selectedChords: string[]) => void;
   bpm: number;
   onBpmChange: (newBpm: number) => void;
+  sound: boolean;
+  onSoundChange: () => void;
 };
 
 export function Settings({
@@ -20,6 +22,8 @@ export function Settings({
   onChordChange,
   bpm,
   onBpmChange,
+  sound,
+  onSoundChange,
 }: SettingsProps) {
   const options = chordsData.map((chord) => ({
     value: chord.id,
@@ -63,6 +67,12 @@ export function Settings({
         >
           {(isRunning && "STOP") || "START"}
         </button>
+
+        {/* Sound toggle */}
+        <label>
+          <input type="checkbox" checked={sound} onChange={onSoundChange} />
+          Metronome
+        </label>
       </form>
     </div>
   );

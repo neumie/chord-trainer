@@ -10,28 +10,35 @@ type ChordTrainerProps = {
   start: boolean;
   bpm: number;
   selectedChords: string[];
+  sound: boolean;
 };
 
 export function ChordTrainer({
   start,
   bpm,
   selectedChords,
+  sound,
 }: ChordTrainerProps) {
   const convertedBpm: number = (60 / bpm) * 1000;
-  const sound: boolean = true;
   const [chords, setChords] = useState<string[]>([]);
+  const [tick, setTick] = useState<boolean>();
   let interval: NodeJS.Timer;
 
-  //Starts rendering chords
+  //Starts the chord trainer
   useEffect(() => {
     if (start) {
       interval = setInterval(() => {
-        metronomeClick();
-        addChord();
+        setTick((prev) => !prev);
       }, convertedBpm);
     } else reset();
     return () => reset();
   }, [start]);
+
+  //Actions to do every tick
+  useEffect(() => {
+    metronomeClick();
+    addChord();
+  }, [tick]);
 
   //clear chords and clear interval
   function reset() {
@@ -40,9 +47,9 @@ export function ChordTrainer({
   }
 
   //Checks if sound is enabled and plays metronome sound
-  function metronomeClick() {
+  const metronomeClick = () => {
     sound && new Audio("./../../metronome.mp3").play();
-  }
+  };
 
   //Adds a chord to the state
   function addChord() {
