@@ -9,11 +9,12 @@ export enum Tones {
 }
 
 export type Note = [number, number | "x"];
+export type Barre = { fromString: number, toString: number, fret: number }
 
 export type Vexchord = {
   chord: Note[];
   position?: number;
-  barres?: { fromString: number, toString: number, fret: number }[];
+  barres?: Barre[];
 }
 
 export type Chord = {
@@ -22,7 +23,7 @@ export type Chord = {
   tone: Tones;
   notes: Note[];
   position?: number;
-  barres?: { fromString: number, toString: number, fret: number }[];
+  barres?: Barre[];
 }
 
 export const chords: Chord[] = [{
